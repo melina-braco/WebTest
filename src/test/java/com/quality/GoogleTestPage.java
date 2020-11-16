@@ -8,8 +8,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GoogleTestPage {
+/*
+ * Autor: melinaBraco
+ * Git: github.com/melina-braco
+ * Repositorio: WebTest
+ * Tema: webdriver
+ */
 
+public class GoogleTestPage {
+	
 	private WebDriver webDriver;
 
 	@Before
@@ -40,6 +47,9 @@ public class GoogleTestPage {
 		searchBox.submit();
 
 		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		System.out.println(webDriver.getTitle());
+
 
 		assertEquals("https://github.com/melina-braco - Buscar con Google", webDriver.getTitle());
 	}
