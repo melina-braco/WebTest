@@ -35,9 +35,7 @@ public class GoogleTestPage {
 
 		webDriver.get("http://google.com/");
 		
-		logger.log(Level.INFO,  webDriver.getTitle());
-		
-		System.out.println("Title WebDrive: " + webDriver.getTitle());
+		logger.log(Level.INFO, "Title WebDrive: " + webDriver.getTitle());		
 		
 	}
 
@@ -64,7 +62,7 @@ public class GoogleTestPage {
 
 		webDriver.quit();
 		
-		System.out.println("Close Browser");
+		logger.log(Level.INFO,  "Close Browser");
 
 	}
 }
