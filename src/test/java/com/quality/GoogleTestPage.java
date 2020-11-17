@@ -2,6 +2,9 @@ package com.quality;
 
 import static org.junit.Assert.*;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +20,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GoogleTestPage {
 	
+	static Logger logger = Logger.getLogger(Class.class.getName());
+
 	private WebDriver webDriver;
 
 	@Before
@@ -30,9 +35,10 @@ public class GoogleTestPage {
 
 		webDriver.get("http://google.com/");
 		
+		logger.log(Level.INFO,  webDriver.getTitle());
+		
 		System.out.println("Title WebDrive: " + webDriver.getTitle());
 		
-		System.out.println("URL: " + webDriver.getCurrentUrl());
 	}
 
 	@Test
@@ -48,8 +54,7 @@ public class GoogleTestPage {
 
 		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		System.out.println(webDriver.getTitle());
-
+		logger.log(Level.INFO,  "Se realizo el testPage01");
 
 		assertEquals("https://github.com/melina-braco - Buscar con Google", webDriver.getTitle());
 	}
