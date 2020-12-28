@@ -62,7 +62,6 @@ public class BasicCalculatorPage {
 		webDriver.quit();
 		
 		System.out.println("Close Browser");
-
 	}
 
 	@Test
@@ -75,6 +74,8 @@ public class BasicCalculatorPage {
 		ValorA.sendKeys("4");
 		
 		ValorB.sendKeys("2");
+		
+		//selecciona el valor del combo
 		
 		ComboTipoOperacion.selectByVisibleText("Add");
 		
