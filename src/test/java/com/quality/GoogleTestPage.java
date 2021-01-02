@@ -60,6 +60,8 @@ public class GoogleTestPage {
 	@After
 	public void tearDown() {
 
+		webDriver.close();
+		
 		webDriver.quit();
 		
 		logger.log(Level.INFO,  "Close Browser");
