@@ -1,15 +1,12 @@
-/**
- * 
- */
 package com.DemoQAPage;
 
-import static org.junit.Assert.fail;
-
+import static org.junit.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import com.DemoQAPage.DriversBrowser;
+import org.openqa.selenium.WebElement;
 
 /**
  * @author MB_E90695
@@ -18,28 +15,39 @@ import com.DemoQAPage.DriversBrowser;
 
 public class Elements {
 
-	private  WebDriver webDriver;
-	
-	public Elements()
-	{
-		webDriver = DriversBrowser.Chrome();
-	}
+	private WebDriver webDriver;
+
 	
 	@Before
 	public void setUp() throws Exception {
 		
+		try {
+		    webDriver = DriversBrowser.HtmlUnit();
+			
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());		
+		}
 	}
 
 	
 	@After
 	public void tearDown() throws Exception {
 		
+		/**
+		 * cerrar driver
+		 * cerrar BD
+		 */
 	}
 
 	@Test
 	public void test() {
 		
-		fail("Not yet implemented");
+		WebElement submit = webDriver.findElement(By.id("app"));
+
+		submit.click();
+		
+		assertTrue(true);
 		
 	}
 }

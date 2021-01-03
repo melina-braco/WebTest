@@ -1,12 +1,10 @@
-/**
- * 
- */
 package com.DemoQAPage;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
 
 /**
  * @author MB_E90695
@@ -31,4 +29,15 @@ public  class DriversBrowser {
 		return webDriver;
 	}
 	
+	
+	public static WebDriver HtmlUnit()
+	{
+		WebDriver webDriver = new HtmlUnitDriver();
+
+		webDriver.get("https://demoqa.com/");
+		
+		webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+		return webDriver;
+	}
 }
