@@ -36,10 +36,7 @@ public  class DriversBrowser {
 	
 	public static WebDriver HtmlUnit(String url)
 	{	
-		ChromeOptions options = new ChromeOptions(); 
-				
-		
-		WebDriver webDriver = new HtmlUnitDriver(options);
+		WebDriver webDriver = new HtmlUnitDriver();
 		
 		webDriver.get(url);
 		

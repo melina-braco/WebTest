@@ -1,6 +1,11 @@
 package com.DemoQAPage;
 
 import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +21,42 @@ import org.openqa.selenium.JavascriptExecutor;
 
 public class Elements {
 
+	static Logger LOGGER;
+	
+	private Handler fileHandler;
+		
 	private WebDriver webDriver;
+	
+	private WebElement textBoxMenu;
+	
+	public Elements()
+	{
+		LOGGER = Logger.getLogger(Class.class.getName());
+		
+		String FechaActual = Fecha.getDate();
+		
+		try {
+			
+			fileHandler = new FileHandler("C:/Users/MB_E90695/Desktop/prueba" + FechaActual + ".txt");
+			
+		} catch (SecurityException e) {
+			
+			e.printStackTrace();
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		//TO REMOVE THE CONSOLE HANDLER
+		
+		LOGGER.setUseParentHandlers(false);
+		
+		fileHandler.setLevel(Level.ALL);
+		
+	    LOGGER.addHandler(fileHandler);
+	}
+	
 	
 	@Before
 	public void setUp() throws Exception {
@@ -24,7 +64,7 @@ public class Elements {
 		try {
 			
 		    webDriver = DriversBrowser.Chrome("https://demoqa.com/elements");
-			
+		    						
 		} catch (Exception e) {
 
 			System.out.println(e.getMessage());		
@@ -40,8 +80,10 @@ public class Elements {
 
 	@Test
 	public void TextBoxTest() {
-			
-		WebElement textBoxMenu = webDriver.findElement(By.xpath("//span[.='Text Box']"));
+		
+		//FB: SE COMPLETA TEXTBOX DE MANERA CORRERTA Y SE ENVIAN LOS DATOS
+		
+	    textBoxMenu = webDriver.findElement(By.xpath("//span[.='Text Box']"));
 		
 		textBoxMenu.click();
 		
@@ -75,6 +117,8 @@ public class Elements {
 		
 		submit.click();
 		
+		LOGGER.log(Level.INFO, "FB: TEXT BOX - " + webDriver.findElement(By.id("output")).getText());	
+				
 		assertNotNull(webDriver.findElement(By.id("name")));
-	}
+	}	
 }
